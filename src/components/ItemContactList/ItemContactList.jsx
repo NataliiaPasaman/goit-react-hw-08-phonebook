@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { selectContacts } from "redux/selector";
-import { selectFilter } from "redux/selector";
+import { selectContacts } from "redux/contacts/selector";
+import { selectFilter } from "redux/contacts/selector";
 import { getFilterContacts } from 'helpers/filteredContacts';
-import { deleteContact } from "redux/operations";
+import { deleteContact } from "redux/contacts/operations";
 import { Notify } from 'notiflix';
 import css from "components/ItemContactList/ItemContactList.module.css";
 
