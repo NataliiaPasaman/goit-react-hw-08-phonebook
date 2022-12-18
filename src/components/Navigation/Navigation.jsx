@@ -7,7 +7,7 @@ export const Navigation = () => {
         <StyledLink to="/">Home</StyledLink>
         <StyledLink to="/contacts">Contacts</StyledLink>
         <StyledLink to="/register">Register</StyledLink>
-        <StyledLink to="/Login">Login</StyledLink>
+        <StyledLink to="/login">Login</StyledLink>
       </nav>
     );
 }
