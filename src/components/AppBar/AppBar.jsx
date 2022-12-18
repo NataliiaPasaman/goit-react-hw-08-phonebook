@@ -1,15 +1,16 @@
 import { Outlet } from 'react-router-dom';
 import { Navigation } from 'components/Navigation/Navigation';
 import { UserMenu } from 'components/UserMenu/UserMenu';
+import { Container, Header } from './AppBar.styled';
 
 export const AppBar = () => {
   return (
-    <>
-      <header>
+    <Container>
+      <Header>
         <Navigation />
         <UserMenu />
-      </header>
+      </Header>
       <Outlet />
-    </>
+    </Container>
   );
 };
