@@ -1,11 +1,12 @@
 import React from 'react';
+import { UserContainer, LogOutButton, UserTitle } from './UserMenu.styled';
 
 export const UserMenu = () =>{
 
     return (
-      <div>
-        <p>`Hello, user!`</p>
-        <button type="button">Log Out</button>
-      </div>
+      <UserContainer>
+        <UserTitle>`Hello, user!`</UserTitle>
+        <LogOutButton type="button">Log Out</LogOutButton>
+      </UserContainer>
     );
 }
