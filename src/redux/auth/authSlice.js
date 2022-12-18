@@ -13,7 +13,8 @@ export const authSlice = createSlice({
     extraReducers: {
         [register.pending] (state) {},
         [register.fulfilled] (state, action) {
-            state.user = action.payload;
+            state.user = action.payload.user;
+            state.token = action.payload.token;
             state.isLoggedIn = true;
         },
         [register.rejected] (state, action) {},
