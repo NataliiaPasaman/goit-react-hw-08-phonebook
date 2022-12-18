@@ -15,3 +15,17 @@ export const register = createAsyncThunk(
         }
     }
 );
+
+
+// Авторизація (логування) користувача POST - Login User
+export const logIn = createAsyncThunk(
+    'auth/login',
+    async (userData, thunkAPI) => {
+        try {
+            const response = await axios.post('/users/login', userData);
+            return response.data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.message);
+        }
+    }
+);
