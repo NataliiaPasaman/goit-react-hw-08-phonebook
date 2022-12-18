@@ -29,12 +29,7 @@ export const ContactForm = () => {
       name,
       phone: form.elements.number.value,
     }));
-    Notify.success(`${name} add to your phonebook!`, {
-      position: 'center-top',
-      opacity: 0.9,
-      fontSize: '20px',
-      width: '320px',
-    });
+    Notify.success(`${name} add to your phonebook!`);
     form.reset();
   };
 
