@@ -27,7 +27,7 @@ export const ContactForm = () => {
 
     dispatch(addContact({
       name,
-      phone: form.elements.number.value,
+      number: form.elements.number.value,
     }));
     Notify.success(`${name} add to your phonebook!`);
     form.reset();
