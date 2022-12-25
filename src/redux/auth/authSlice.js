@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { register, logIn, logOut } from "./operations";
+import { register, logIn, logOut, getCurrentUser } from "./operations";
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
@@ -16,19 +16,21 @@ const handleLogInAndRegister = (state, action) => {
 };
 
 export const authSlice = createSlice({
-    name: 'auth',
-    initialState,
-    extraReducers: {
-        // [register.pending] (state) {},
-        [register.fulfilled]: handleLogInAndRegister,
-        // [register.rejected] (state, action) {},
-        [logIn.fulfilled]: handleLogInAndRegister,
-        [logOut.fulfilled] (state) {
-            state.user = { name: null, email: null };
-            state.token = null;
-            state.isLoggedIn = false;
-        }
+  name: 'auth',
+  initialState,
+  extraReducers: {
+    [register.fulfilled]: handleLogInAndRegister,
+    [logIn.fulfilled]: handleLogInAndRegister,
+    [logOut.fulfilled](state) {
+      state.user = { name: null, email: null };
+      state.token = null;
+      state.isLoggedIn = false;
     },
+    [getCurrentUser.fulfilled](state, action) {
+      state.user = action.payload;
+      state.isLoggedIn = true;
+    },
+  },
 });
 
 

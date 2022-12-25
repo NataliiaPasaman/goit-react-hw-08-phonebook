@@ -52,3 +52,22 @@ export const logOut = createAsyncThunk(
         }
     }
 );
+
+// Отримуємо дані поточного юзера при перезагрузці сторінки
+export const getCurrentUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.token;
+      if (!token) {
+        return thunkAPI.rejectWithValue('Unable to fetch user');
+      };
+
+      setAuthHeader(token);
+      const response = await axios.get('/users/current');
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
