@@ -8,7 +8,7 @@ import { Filter } from 'components/Filter/Filter';
 import { ContactsList } from 'components/ContactsList/ContactsList';
 import { Loader } from 'components/Loader/Loader';
 
-export const Contacts = () =>{
+export default function Contacts() {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const dispatch = useDispatch();

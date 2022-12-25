@@ -9,7 +9,7 @@ import {
 } from './Register.styled';
 import { register } from 'redux/auth/operations';
 
-export const Register = () =>{
+export default function Register() {
   const dispatch = useDispatch();
 
   const [name, setName] = useState('');
