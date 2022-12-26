@@ -1,7 +1,7 @@
 import { useEffect, lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { PrivateRoute } from './PrivateRoute';
-// import { PublicRoute } from './PublicRoute';
+import { PublicRoute } from './PublicRoute';
 import { useDispatch } from "react-redux";
 import { getCurrentUser } from 'redux/auth/operations';
 import { AppBar } from './AppBar/AppBar';
@@ -24,14 +24,31 @@ export const App = () => {
       <Route path="/" element={<AppBar />}>
         
         <Route index element={<Home />} />
-        {/* <Route path="contacts" element={<Contacts />} /> */}
-        <Route path="register" element={<Register />} />
-        <Route path="login" element={<Login />} />
+
+        <Route
+          path="register"
+          element={
+            <PublicRoute redirectTo="/contacts">
+              <Register />
+            </PublicRoute>
+          }
+        />
+
+        <Route
+          path="login"
+          element={
+            <PublicRoute redirectTo="/contacts">
+              <Login />
+            </PublicRoute>
+          }
+        />
 
         <Route
           path="contacts"
           element={
-            <PrivateRoute redirectTo="/login" component={<Contacts />} />
+            <PrivateRoute redirectTo="/login">
+              <Contacts />
+            </PrivateRoute>
           }
         />
       </Route>
@@ -39,12 +56,3 @@ export const App = () => {
     </Suspense>
   );
 };
-
-
-/** Маршрутизація
-Додай маршрутизацію з бібліотекою React Router. У програмі має бути кілька сторінок:
-
-/register - публічний маршрут реєстрації нового користувача з формою
-/login - публічний маршрут логіна існуючого користувача з формою
-/contacts - приватний маршрут для роботи зі списком контактів користувача
- */
