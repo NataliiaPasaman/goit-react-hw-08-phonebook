@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentUser } from 'redux/auth/operations';
 import { selectIsRefreshing } from 'redux/auth/selectors';
 import { AppBar } from './AppBar/AppBar';
+import { Container } from './App.styled';
 
 const Home = lazy(() => import('../pages/Home/Home'));
 const Register = lazy(() => import('../pages/Register/Register'));
@@ -22,40 +23,42 @@ export const App = () => {
 
   return (
     !isRefreshing && (
-      <Suspense fallback={<div>Loadind...</div>}>
-        <Routes>
-          <Route path="/" element={<AppBar />}>
-            <Route index element={<Home />} />
+      <Container>
+        <Suspense fallback={<div>Loadind...</div>}>
+          <Routes>
+            <Route path="/" element={<AppBar />}>
+              <Route index element={<Home />} />
 
-            <Route
-              path="register"
-              element={
-                <PublicRoute redirectTo="/contacts">
-                  <Register />
-                </PublicRoute>
-              }
-            />
+              <Route
+                path="register"
+                element={
+                  <PublicRoute redirectTo="/contacts">
+                    <Register />
+                  </PublicRoute>
+                }
+              />
 
-            <Route
-              path="login"
-              element={
-                <PublicRoute redirectTo="/contacts">
-                  <Login />
-                </PublicRoute>
-              }
-            />
+              <Route
+                path="login"
+                element={
+                  <PublicRoute redirectTo="/contacts">
+                    <Login />
+                  </PublicRoute>
+                }
+              />
 
-            <Route
-              path="contacts"
-              element={
-                <PrivateRoute redirectTo="/login">
-                  <Contacts />
-                </PrivateRoute>
-              }
-            />
-          </Route>
-        </Routes>
-      </Suspense>
+              <Route
+                path="contacts"
+                element={
+                  <PrivateRoute redirectTo="/login">
+                    <Contacts />
+                  </PrivateRoute>
+                }
+              />
+            </Route>
+          </Routes>
+        </Suspense>
+      </Container>
     )
   );
 };
