@@ -7,17 +7,18 @@ justify-content: space-between;
 `;
 
 export const UserTitle = styled.p`
-color: rgb(72 70 70);
-font-weight: 500;
+color: black;
+font-weight: 700;
 font-size: 24px;
+margin-left: 10px;
 `;
 
 export const LogOutButton = styled.button`
 margin-left: 20px;
-  width: 100px;
-  height: 33px;
+  width: 80px;
+  height: 26px;
   background-color: yellow;
-  font-size: 20px;
+  font-size: 16px;
   color: black;
   border: 0;
   border-radius: 8px;
