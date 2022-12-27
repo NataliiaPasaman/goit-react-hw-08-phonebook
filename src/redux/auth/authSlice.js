@@ -7,6 +7,7 @@ const initialState = {
     user: { name: null, email: null },
     isLoggedIn: false,
     token: null,
+    isRefreshing: false,
 }
 
 const handleLogInAndRegister = (state, action) => {
@@ -26,9 +27,16 @@ export const authSlice = createSlice({
       state.token = null;
       state.isLoggedIn = false;
     },
+    [getCurrentUser.pending](state) {
+      state.isRefreshing = true;
+    },
     [getCurrentUser.fulfilled](state, action) {
       state.user = action.payload;
       state.isLoggedIn = true;
+      state.isRefreshing = false;
+    },
+    [getCurrentUser.rejected](state) {
+      state.isRefreshing = false;
     },
   },
 });
