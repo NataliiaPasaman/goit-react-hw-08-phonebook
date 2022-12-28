@@ -2,7 +2,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addContact } from 'redux/contacts/operations';
 import { selectContacts } from "redux/contacts/selector";
 import { Notify } from 'notiflix';
-import css from 'components/ContactForm/ContactForm.module.css';
+import { MdAddCall, MdOutlinePeopleAlt } from 'react-icons/md';
+import { AiFillPhone } from 'react-icons/ai';
+import { Form, LabelPhone, InputPhone, BtnPhone, Box } from './ContactForm.styled';
 
 export const ContactForm = () => {
   const contacts = useSelector(selectContacts);
@@ -19,8 +21,6 @@ export const ContactForm = () => {
       Notify.failure(`${name} is already in contacts`, {
         position: 'center-top',
         opacity: 0.9,
-        fontSize: '20px',
-        width: '320px',
       });
       return;
     }
@@ -29,37 +29,42 @@ export const ContactForm = () => {
       name,
       number: form.elements.number.value,
     }));
-    Notify.success(`${name} add to your phonebook!`);
+    Notify.success(`${name} add to your phonebook!`, {
+      position: 'center-top',
+    });
     form.reset();
   };
 
     return (
-      <form className={css.formPhone} onSubmit={handleSubmit}>
-        <label className={css.labelPhone}>
+      <Form onSubmit={handleSubmit}>
+        <Box>
+        <LabelPhone>
           Name
-          <input
-            className={css.inputPhone}
+          <MdOutlinePeopleAlt size={24} />
+          <InputPhone
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
           />
-        </label>
-        <label className={css.labelPhone}>
+        </LabelPhone>
+        <LabelPhone>
           Number
-          <input
-            className={css.inputPhone}
+          <AiFillPhone size={24} />
+          <InputPhone
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
           />
-        </label>
-        <button className={css.btnPhone} type="submit">
+        </LabelPhone>
+        </Box>
+        <BtnPhone type="submit">
+          <MdAddCall size={16} />
           Add contact
-        </button>
-      </form>
+        </BtnPhone>
+      </Form>
     );
 }

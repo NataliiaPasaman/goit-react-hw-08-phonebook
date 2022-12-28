@@ -7,6 +7,7 @@ import { ContactForm } from 'components/ContactForm/ContactForm';
 import { Filter } from 'components/Filter/Filter';
 import { ContactsList } from 'components/ContactsList/ContactsList';
 import { Loader } from 'components/Loader/Loader';
+import { ContactsContainer, FormTitle, ContactTitle } from './Contacts.styled'
 
 export default function Contacts() {
   const isLoading = useSelector(selectIsLoading);
@@ -14,18 +15,17 @@ export default function Contacts() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchContacts())
-  }, [dispatch])
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
-    return (
-      <div>
-
-      <h1>Phonebook</h1>
+  return (
+    <ContactsContainer>
+      <FormTitle>Phonebook</FormTitle>
       <ContactForm />
-      <h2>Contacts</h2>
+      <ContactTitle>Contacts</ContactTitle>
       <Filter />
       {isLoading && !error && <Loader />}
       {!isLoading && !error && <ContactsList />}
-      </div>
-    );
+    </ContactsContainer>
+  );
 }
