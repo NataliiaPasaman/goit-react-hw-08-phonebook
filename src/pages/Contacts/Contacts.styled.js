@@ -18,6 +18,7 @@ export const FormTitle = styled.h1`
 `;
 
 export const ContactTitle = styled.h2`
+margin-bottom: 40px;
   font-size: 54px;
   font-weight: 700;
   color: blue;
