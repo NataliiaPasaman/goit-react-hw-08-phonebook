@@ -71,24 +71,23 @@ transition: border-color 250ms ease-in;
 
 export const ButtonLogin = styled.button`
 cursor: pointer;
-margin-top: 20px;
-width: 490px;
-
+width: 120px;
 padding: 7px;
-border-radius: 6px;
+border-radius: 5px;
 border-color: transparent;
-background-color: yellow;
-color: blue;
+background-color: #a3a0a0;
+color: black;
 font-family: inherit;
 font-size: 18px;
-font-weight: 900;
-line-height: 1.2;
+font-weight: 700;
+line-height: 1.5;
 text-align: center;
-scale: 1;
 transition: scale 250ms ease-in;
 
 &:hover,
 &:focus {
-    box-shadow: 2px 10px 54px 1px rgba(25,93,224,0.86);
+    scale: 1.1;
+    background-color: white;
+    color: blue;
 }
 `;
