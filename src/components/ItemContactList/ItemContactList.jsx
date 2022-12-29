@@ -5,7 +5,13 @@ import { selectFilter } from "redux/contacts/selector";
 import { getFilterContacts } from 'helpers/filteredContacts';
 import { deleteContact } from "redux/contacts/operations";
 import { Notify } from 'notiflix';
-import css from "components/ItemContactList/ItemContactList.module.css";
+import { MdDelete } from 'react-icons/md';
+import { 
+  ContactsItem, 
+  Box, 
+  ContactName, 
+  Number, 
+  ButtonDelete } from './ItemContactList.styled'
 
 export const ItemContactList = () => {
   const contacts = useSelector(selectContacts);
@@ -14,31 +20,27 @@ export const ItemContactList = () => {
 
   const handleDelete = (id, name) => {
     dispatch(deleteContact(id));
-    Notify.info(`${name} deleted from your phonebook`, {
+    Notify.warning(`${name} deleted from your phonebook`, {
       position: 'center-top',
-      opacity: 0.9,
-      fontSize: '20px',
-      width: '320px',
     })
   }
 
   const filteredContacts = getFilterContacts(contacts, filter);
-  const addContactItem = filteredContacts.map(({ id, name, phone }) => {
+  const addContactItem = filteredContacts.map(({ id, name, number }) => {
     return (
-      <li className={css.contacts__item} key={id}>
-        <div className={css.contacts__box}>
-          <h3 className={css.contacts__title}>{name}: </h3>
-          <span className={css.contacts__number}> {phone}</span>
-        </div>
+      <ContactsItem key={id}>
+        <Box>
+          <ContactName>{name}: </ContactName>
+          <Number> {number}</Number>
+        </Box>
 
-        <button
+        <ButtonDelete
           type="button"
-          className={css.btnDelete}
           onClick={() => handleDelete(id, name)}
         >
-          Delete
-        </button>
-      </li>
+          <MdDelete size={32} />
+        </ButtonDelete>
+      </ContactsItem>
     );
   });
 
