@@ -2,6 +2,16 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { logIn } from 'redux/auth/operations';
+import { BiLogIn } from 'react-icons/bi';
+import { RiLockPasswordFill } from 'react-icons/ri';
+import { HiOutlineMail } from 'react-icons/hi';
+import { 
+  LoginContainer, 
+  Title, 
+  FormLogin, 
+  LabelLogin, 
+  InputLogin, 
+  ButtonLogin } from './Login.styled';
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -29,16 +39,32 @@ export default function Login() {
   }
 
     return (
-      <div>
-        <form autoComplete="off" onSubmit={handleSubmitLogin}>
-          <label>Email
-            <input type="email" name="email" value={email} onChange={handleChangeLogin} />
-          </label>
-          <label>Password
-            <input type="password" name="password" value={password} onChange={handleChangeLogin} />
-          </label>
-          <button type="submit">Log In</button>
-        </form>
-      </div>
+      <LoginContainer>
+        <BiLogIn size={32} color="blue" />
+        <Title>Log In</Title>
+        <FormLogin autoComplete="off" onSubmit={handleSubmitLogin}>
+          <LabelLogin>
+            <HiOutlineMail size={20} />
+            Email
+            <InputLogin
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleChangeLogin}
+            />
+          </LabelLogin>
+          <LabelLogin>
+            <RiLockPasswordFill size={20} />
+            Password
+            <InputLogin
+              type="password"
+              name="password"
+              value={password}
+              onChange={handleChangeLogin}
+            />
+          </LabelLogin>
+          <ButtonLogin type="submit">Log In</ButtonLogin>
+        </FormLogin>
+      </LoginContainer>
     );
 }

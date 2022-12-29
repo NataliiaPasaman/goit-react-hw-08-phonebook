@@ -1,32 +1,31 @@
 import styled from 'styled-components';
 
-export const FormTitle = styled.h1`
-  margin-bottom: 40px;
-  font-size: 48px;
+export const LoginContainer = styled.div`
+max-width: 100%;
+margin: 0 auto;
+padding: 30px 20px;
+text-align: center;
+`;
+
+export const Title = styled.h2`
+  margin-bottom: 20px;
+  font-size: 32px;
   font-weight: 700;
   color: yellow;
-  font-style: italic;
   text-align: center;
-  text-decoration: underline;
 `;
 
-export const Form = styled.form`
-margin-bottom: 140px;
+export const FormLogin = styled.form`
+width: 810px;
 `;
 
-
-export const Box = styled.div`
-display: flex;
-justify-content: space-beetwen;
-align-items: center;
-`;
-
-export const LabelPhone = styled.label`
+export const LabelLogin = styled.label`
 position: relative;
 display: block;
-width: 100%;
-margin-bottom: 18px;
-margin-right: 20px;
+width: 490px;
+margin-bottom: 14px;
+margin-left: auto;
+margin-right: auto;
 
 color: #f6ff00;
 
@@ -36,7 +35,7 @@ font-size: 18px;
 line-height: 1.17;
 
 &:last-child {
-    margin-right: 0;
+    margin-bottom: 0;
 }
 
 > svg {
@@ -44,14 +43,15 @@ line-height: 1.17;
     top: 42px;
     left: 6px;
     color: blue;
+}
 `;
 
-export const InputPhone = styled.input`
+export const InputLogin = styled.input`
 display: block;
-padding: 8px 8px 8px 32px;
+padding: 8px 8px 8px 28px;
 margin-top: 10px;
 
-width: 330px;
+width: 450px;
 height: 25px;
 
 font-size: 14px;
@@ -69,34 +69,26 @@ transition: border-color 250ms ease-in;
 }
 `;
 
-export const BtnPhone = styled.button`
-position: relative;
+export const ButtonLogin = styled.button`
 cursor: pointer;
-margin-top: 60px;
-width: 90px;
-height: 90px;
+margin-top: 20px;
+width: 490px;
+
 padding: 7px;
-border-radius: 50%;
+border-radius: 6px;
 border-color: transparent;
 background-color: yellow;
 color: blue;
 font-family: inherit;
-font-size: 16px;
-font-weight: 700;
-line-height: 1.5;
+font-size: 18px;
+font-weight: 900;
+line-height: 1.2;
 text-align: center;
 scale: 1;
 transition: scale 250ms ease-in;
 
 &:hover,
 &:focus {
-    scale: 1.3;
-    font-weight: 900;
     box-shadow: 2px 10px 54px 1px rgba(25,93,224,0.86);
-}
-> svg {
-    position: absolute;
-    top: 2px;
-    left: 34px;
 }
 `;
