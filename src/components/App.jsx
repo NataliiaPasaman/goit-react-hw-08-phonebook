@@ -6,7 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentUser } from 'redux/auth/operations';
 import { selectIsRefreshing } from 'redux/auth/selectors';
 import { AppBar } from './AppBar/AppBar';
-import { Container } from './App.styled';
+import { LoaderApp } from 'components/Loader/Loader'
+import { Container, LoaderContainer } from './App.styled';
 
 const Home = lazy(() => import('../pages/Home/Home'));
 const Register = lazy(() => import('../pages/Register/Register'));
@@ -24,7 +25,9 @@ export const App = () => {
   return (
     !isRefreshing && (
       <Container>
-        <Suspense fallback={<div>Loadind...</div>}>
+        <Suspense 
+        fallback={<LoaderContainer><LoaderApp /></LoaderContainer>
+        }>
           <Routes>
             <Route path="/" element={<AppBar />}>
               <Route index element={<Home />} />

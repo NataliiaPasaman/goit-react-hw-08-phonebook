@@ -13,3 +13,8 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
+
+export const LoaderContainer = styled.div`
+  padding-left: 350px;
+  padding-top: 350px;
+`;
